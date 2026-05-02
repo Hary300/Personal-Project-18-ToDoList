@@ -14,7 +14,10 @@ function tanya() {
     if (input === 'exit') {
       console.log('Todo List:');
       for (let i = 0; i < todos.length; i++) {
-        console.log(`${i + 1}. ${todos[i]}`);
+        const number = i + 1;
+        const status = todos[i].done ? '[x]' : '[ ]';
+        const textTodo = todos[i].text;
+        console.log(`${number}. ${status} ${textTodo}`);
       }
       rl.close();
       return;
@@ -23,7 +26,12 @@ function tanya() {
     if (input === '') {
       console.log('Todo tidak boleh kosong');
     } else {
-      todos.push(input);
+      let objInput = {
+        text: input,
+        done: false,
+      };
+
+      todos.push(objInput);
     }
 
     tanya();
